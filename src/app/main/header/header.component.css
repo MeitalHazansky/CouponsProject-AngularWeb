@@ -1,0 +1,32 @@
+@keyframes slidein {
+    0%   {opacity:0;}
+    100% {opacity:1;}
+}
+
+.login-container .row{
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+.alert {
+    animation-name: slidein;
+    animation-duration: .9s;
+    display: block;
+}
+
+.navbar {
+    background: #776756;
+}
+
+.modal-header {
+    background: #776756 ;
+}
+
+.modal-footer {
+    background: #776756 ;
+}
+
+.modal-body {
+    background: #c6b9ab;
+}
+

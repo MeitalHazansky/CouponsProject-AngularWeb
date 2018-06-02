@@ -1,0 +1,55 @@
+<div *ngIf="companies" class="container">
+  <div class="row">
+    <div class="col col-md-12">
+      <table *ngIf="companies" class="table">
+        <thead>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Password</th>
+          <th>Email</th>
+          <th>Remove</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let company of companies" [ngStyle]="{'background-color': company.color}">
+            <td>
+              <input type="text" value="{{company.id}}" readonly disabled>
+            </td>
+            <td>
+              <input type="text" value="{{company.compName}}" readonly disabled>
+            </td>
+            <td>
+              <input type="text" [(ngModel)]="company.password" (change)="company.toUpdate = true;company.color = '#b5c1b0'">
+            </td>
+            <td>
+              <input type="text" [(ngModel)]="company.email" (change)="company.toUpdate = true;company.color = '#b5c1b0'" >
+            </td>
+            <td>
+              <input type="checkbox" [(ngModel)]="company.toRemove" >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row ">
+    <div class="col col-md-4 ">
+      <button class="btn btn-outline-primary " (click)="updateSelectedCompanies() ">
+        Update Companies
+      </button>
+    </div>
+    <div class="col col-md-4 ">
+      <button class="btn btn-outline-danger " (click)="removeSelectedCompanies() ">
+        Remove Selected Companies
+      </button>
+    </div>
+    <div class="col col-md-4 ">
+      <button class="btn btn-outline-success " (click)="openModal(createCompany) ">
+        Create Company
+      </button>
+    </div>
+  </div>
+</div>
+<ng-template #createCompany>
+  <app-admin-company-create [modalRef]="modalRef " (companyCreateEvent)="addCompanyToArray($event) "></app-admin-company-create>
+</ng-template>
